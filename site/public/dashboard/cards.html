@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi - CS</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="dashboards.css">
+
+    <script src="../js/funcoes.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+.popup {
+    display: none;
+    width: 300px;
+    height: 400px;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    position: fixed;
+    border: 1px solid black;
+    padding: 0;
+    margin: auto;
+    background-color: white;
+}
+
+
+
+#myChart {
+    width: 10px;
+    height: 10px;
+}
+
+</style>
+
+<body
+    onload="validarSessao(), atualizacaoPeriodica(), requisitar(), requisitar_mapa(), requisitar_arma(), requisitar_funcao(), jogador_entrar(), mapa_entrar(), arma_entrar(), funcao_entrar()">
+
+    
+    
+    <div class="janela">
+        
+        
+        <div class="header-left dash-header">
+            
+            <h1>Pi - CS</h1>
+            
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Dashboard</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+            
+        </div>
+        
+        <div class="dash">
+            
+
+            <div id="popup" class="popup">
+                <canvas id="myChart"></canvas>
+            </div>
+
+            <div id="popup1" class="popup">
+                <canvas id="myChart1"></canvas>
+            </div>
+
+            <div id="popup2" class="popup">
+                <canvas id="myChart2"></canvas>
+            </div>
+
+            <div id="popup3" class="popup">
+                <canvas id="myChart3"></canvas>
+            </div>
+
+            <div class="cards">
+                <div id="div_jogador" onclick="popup()" class="card">
+                    <h1>Jogador escolhido</h1>
+                    
+                   <p style="margin-left:15px;" id="jogador_escolhido">x</p>
+                   
+
+                  
+
+                </div>
+                <div id="div_mapa" onclick="popup1()" class="card">
+                    <h1>Mapa escolhido</h1>
+                        <p style="margin-left: 15px" id="mapa_escolhido">x</p>
+                        
+                   
+                </div>
+                <div id="div_arma" onclick="popup2()" class="card">
+                    <h1>Arma escohida</h1>
+                        <p style="margin-left: 15px;" id="arma_escolhida">x</p>
+
+                       
+
+                </div>
+                <div id="div_funcao" onclick="popup3()" class="card">
+                    <h1>Função escolhida</h1>
+                        <p style="margin-left: 15px;" id="funcao_escolhida">x</p>
+
+                        
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+
+function popup() {
+    document.getElementById('popup').style.display = 'block'
+}
+
+function popup1() {
+    document.getElementById('popup1').style.display = 'block'
+}
+
+function popup2() {
+    document.getElementById('popup2').style.display = 'block'
+}
+
+function popup3() {
+    document.getElementById('popup3').style.display = 'block'
+}
+
+    var nome0 = ''
+    var nome1 = ''
+    var nome2 = ''
+    var nome3 = ''
+    var nome4 = ''
+    var voto0 = 0
+    var voto1 = 0
+    var voto2 = 0
+    var voto3 = 0
+    var voto4 = 0
+
+    var voto_total = 0
+
+    var mapa0 = ''
+    var mapa1 = ''
+    var mapa2 = ''
+    var mapa3 = ''
+    var mapa4 = ''
+    var votomapa0 = 0
+    var votomapa1 = 0
+    var votomapa2 = 0
+    var votomapa3 = 0
+    var votomapa4 = 0
+
+    var votomapa_total = 0
+
+    var arma0 = ''
+    var arma1 = ''
+    var arma2 = ''
+    var arma3 = ''
+    var arma4 = ''
+    var votoarma0 = 0
+    var votoarma1 = 0
+    var votoarma2 = 0
+    var votoarma3 = 0
+    var votoarma4 = 0
+
+    var votoarma_total = 0
+
+    var funcao0 = ''
+    var funcao1 = ''
+    var funcao2 = ''
+    var funcao3 = ''
+    var funcao4 = ''
+    var votofuncao0 = 0
+    var votofuncao1 = 0
+    var votofuncao2 = 0
+    var votofuncao3 = 0
+    var votofuncao4 = 0
+
+    var votofuncao_total = 0
+
+    var jogador_atual = 0
+    var mapa_atual = 0
+    var arma_atual = 0
+    var funcao_atual = 0
+
+    function jogador_entrar() {
+    
+    if (jogador_escolhido.innerHTML == 'Device') {
+        jogador_atual = 4
+    } else if (jogador_escolhido.innerHTML == 'Zywoo') {
+        jogador_atual = 3
+    } else if (jogador_escolhido.innerHTML == 'S1mple') {
+     jogador_atual = 2
+    } else if (jogador_escolhido.innerHTML == 'Scream') {
+jogador_atual = 1
+    } else {
+        
+    }
+
+}
+
+
+                    
+
+function mapa_entrar() {
+    
+    if (mapa_escolhido.innerHTML == 'Nuke') {
+        mapa_atual = 4
+    } else if (mapa_escolhido.innerHTML == 'Inferno') {
+        mapa_atual = 3
+    } else if (mapa_escolhido.innerHTML == 'Dust2') {
+     mapa_atual = 2
+    } else if (mapa_escolhido.innerHTML == 'Train') {
+mapa_atual = 1
+    } else {
+        
+    }
+
+}
+
+function arma_entrar() {
+    
+    if (arma_escolhida.innerHTML == 'Sg 553') {
+        arma_atual = 4
+    } else if (arma_escolhida.innerHTML == 'Aug') {
+        arma_atual = 3
+    } else if (arma_escolhida.innerHTML == 'M4') {
+     arma_atual = 2
+    } else if (arma_escolhida.innerHTML == 'Ak-47') {
+arma_atual = 1
+    } else {
+        
+    }
+
+}
+
+function funcao_entrar() {
+    
+    if (funcao_escolhida.innerHTML == 'IGL') {
+        funcao_atual = 4
+    } else if (funcao_escolhida.innerHTML == 'Awper') {
+        funcao_atual = 3
+    } else if (funcao_escolhida.innerHTML == 'Coringa') {
+     funcao_atual = 2
+    } else if (funcao_escolhida.innerHTML == 'Support') {
+funcao_atual = 1
+    } else {
+        
+    }
+
+}
+
+
+
+
+    function requisitar() {
+        fetch("/usuarios/requisitar").then(function (res1) {
+            if (res1.ok) {
+                console.log(res1)
+                res1.json().then(function (res1) {
+                    console.log("Dados recebidos: ", JSON.stringify(res1))
+                    nome0 = res1[0].nome
+                    voto0 = res1[0].voto
+                    voto_total += voto0
+                    nome1 = res1[1].nome
+                    voto1 = res1[1].voto
+                    voto_total += voto1
+                    nome2 = res1[2].nome
+                    voto2 = res1[2].voto
+                    voto_total += voto2
+                    nome3 = res1[3].nome
+                    voto3 = res1[3].voto
+                    voto_total += voto3
+                    nome4 = res1[4].nome
+                    voto4 = res1[4].voto
+                    voto_total += voto4
+
+    data1.datasets[0].data[0] = voto0 
+    data1.datasets[0].data[1] = voto1
+    data1.datasets[0].data[2] = voto2 
+    data1.datasets[0].data[3] = voto3 
+    data1.datasets[0].data[4] = voto4   
+
+                }
+                );
+            } else {
+                throw ('Houve um erro ao pegar info!');
+            }
+        }).catch(function (res1) {
+            console.error(res1);
+        });
+    }
+
+    function requisitar_mapa() {
+        fetch("/usuarios/requisitar_mapa").then(function (res1) {
+            if (res1.ok) {
+                console.log(res1)
+                res1.json().then(function (res1) {
+                    console.log("Dados recebidos: ", JSON.stringify(res1))
+                    mapa0 = res1[0].nome
+                    votomapa0 = res1[0].voto
+                    votomapa_total += votomapa0
+                    mapa1 = res1[1].nome
+                    votomapa1 = res1[1].voto
+                    votomapa_total += votomapa1
+                    mapa2 = res1[2].nome
+                    votomapa2 = res1[2].voto
+                    votomapa_total += votomapa2
+                    mapa3 = res1[3].nome
+                    votomapa3 = res1[3].voto
+                    votomapa_total += votomapa3
+                    mapa4 = res1[4].nome
+                    votomapa4 = res1[4].voto
+                    votomapa_total += votomapa4
+
+
+                    data2.datasets[0].data[0] = votomapa0
+                    data2.datasets[0].data[1] = votomapa1
+                    data2.datasets[0].data[2] = votomapa2
+                    data2.datasets[0].data[3] = votomapa3
+                    data2.datasets[0].data[4] = votomapa4
+
+
+                }
+                );
+            } else {
+                throw ('Houve um erro ao pegar info!');
+            }
+        }).catch(function (res1) {
+            console.error(res1);
+        });
+    }
+
+    function requisitar_arma() {
+        fetch("/usuarios/requisitar_arma").then(function (res1) {
+            if (res1.ok) {
+                console.log(res1)
+                res1.json().then(function (res1) {
+                    console.log("Dados recebidos: ", JSON.stringify(res1))
+                    arma0 = res1[0].nome
+                    votoarma0 = res1[0].voto
+                    votoarma_total += votoarma0
+                    arma1 = res1[1].nome
+                    votoarma1 = res1[1].voto
+                    votoarma_total += votoarma1
+                    arma2 = res1[2].nome
+                    votoarma2 = res1[2].voto
+                    votoarma_total += votoarma2
+                    arma3 = res1[3].nome
+                    votoarma3 = res1[3].voto
+                    votoarma_total += votoarma3
+                    arma4 = res1[4].nome
+                    votoarma4 = res1[4].voto
+                    votoarma_total += votoarma4
+
+                    data3.datasets[0].data[0] = votoarma0
+                    data3.datasets[0].data[1] = votoarma1
+                    data3.datasets[0].data[2] = votoarma2
+                    data3.datasets[0].data[3] = votoarma3
+                    data3.datasets[0].data[4] = votoarma4
+
+
+                }
+                );
+            } else {
+                throw ('Houve um erro ao pegar info!');
+            }
+        }).catch(function (res1) {
+            console.error(res1);
+        });
+    }
+
+    function requisitar_funcao() {
+        fetch("/usuarios/requisitar_funcao").then(function (res1) {
+            if (res1.ok) {
+                console.log(res1)
+                res1.json().then(function (res1) {
+                    console.log("Dados recebidos: ", JSON.stringify(res1))
+                    funcao0 = res1[0].nome
+                    votofuncao0 = res1[0].voto
+                    votofuncao_total += votofuncao0
+                    funcao1 = res1[1].nome
+                    votofuncao1 = res1[1].voto
+                    votofuncao_total += votofuncao1
+                    funcao2 = res1[2].nome
+                    votofuncao2 = res1[2].voto
+                    votofuncao_total += votofuncao2
+                    funcao3 = res1[3].nome
+                    votofuncao3 = res1[3].voto
+                    votofuncao_total += votofuncao3
+                    funcao4 = res1[4].nome
+                    votofuncao4 = res1[4].voto
+                    votofuncao_total += votofuncao4
+
+                    data4.datasets[0].data[0] = votofuncao0
+                    data4.datasets[0].data[1] = votofuncao1
+                    data4.datasets[0].data[2] = votofuncao2
+                    data4.datasets[0].data[3] = votofuncao3
+                    data4.datasets[0].data[4] = votofuncao4
+
+
+                }
+                );
+            } else {
+                throw ('Houve um erro ao pegar info!');
+            }
+        }).catch(function (res1) {
+            console.error(res1);
+        });
+    }
+
+
+if (sessionStorage.JOGADOR == 'Fallen') {
+    div_jogador.innerHTML = ` <h1>Jogador escolhido</h1>
+                    <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/fallen.jpg">
+                   <p style="margin-left:15px;" id="jogador_escolhido">${sessionStorage.JOGADOR}</p>`
+} else if (sessionStorage.JOGADOR == 'Scream') {
+    div_jogador.innerHTML = ` <h1>Jogador escolhido</h1>
+                    <img style="width: 150px; margin-bottom: 30px;" src="../assets/imgs/scream.jpg">
+                   <p style="margin-left:15px;" id="jogador_escolhido">${sessionStorage.JOGADOR}</p>`
+} else if (sessionStorage.JOGADOR == 'S1mple') {
+    div_jogador.innerHTML = ` <h1>Jogador escolhido</h1>
+                    <img style="width: 150px; margin-bottom: 30px;" src="../assets/imgs/s1mple.jpg">
+                   <p style="margin-left:15px;" id="jogador_escolhido">${sessionStorage.JOGADOR}</p>`
+} else if (sessionStorage.JOGADOR == 'Zywoo') {
+    div_jogador.innerHTML = ` <h1>Jogador escolhido</h1>
+                    <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/zywoo.jpg">
+                   <p style="margin-left:15px;" id="jogador_escolhido">${sessionStorage.JOGADOR}</p>`
+} else {
+    div_jogador.innerHTML = ` <h1>Jogador escolhido</h1>
+                    <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/device.jpg">
+                   <p style="margin-left:15px;" id="jogador_escolhido">${sessionStorage.JOGADOR}</p>`
+}
+
+
+if (sessionStorage.MAPA == 'Mirage') {
+div_mapa.innerHTML = `<h1>Mapa escolhido</h1> <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/mapamirage.jpg"> <p style="margin-left: 15px" id="mapa_escolhido">${sessionStorage.MAPA}</p> `
+} else if (sessionStorage.MAPA == 'Train') {
+    div_mapa.innerHTML = `<h1>Mapa escolhido</h1> <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/mapatrain.jpg"> <p style="margin-left: 15px" id="mapa_escolhido">${sessionStorage.MAPA}</p> `
+} else if (sessionStorage.MAPA == 'Dust2') {
+    div_mapa.innerHTML = `<h1>Mapa escolhido</h1> <img style="width: 200px; margin-bottom: 30px;" src="../assets/imgs/mapad2.jpg"> <p style="margin-left: 15px" id="mapa_escolhido">${sessionStorage.MAPA}</p> `
+} else if (sessionStorage.MAPA == 'Inferno') {
+    div_mapa.innerHTML = `<h1>Mapa escolhido</h1> <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/mapainferno.jpg"> <p style="margin-left: 15px" id="mapa_escolhido">${sessionStorage.MAPA}</p> `
+} else {
+    div_mapa.innerHTML = `<h1>Mapa escolhido</h1> <img style="width: 180px; margin-bottom: 30px;" src="../assets/imgs/mapanuke.jpg"> <p style="margin-left: 15px" id="mapa_escolhido">${sessionStorage.MAPA}</p> `
+}
+
+if (sessionStorage.ARMA == 'Awp') {
+div_arma.innerHTML = ` <h1>Arma escohida</h1>
+<img style="width: 210px; margin-bottom:69px" src="../assets/imgs/awp.jpg">
+                        <p style="margin-left: 15px;" id="arma_escolhida">${sessionStorage.ARMA}</p>`
+} else if (sessionStorage.ARMA == 'Ak-47') {
+    div_arma.innerHTML = ` <h1>Arma escohida</h1>
+<img style="width: 210px; margin-bottom:30px" src="../assets/imgs/ak.jpg">
+                        <p style="margin-left: 15px;" id="arma_escolhida">${sessionStorage.ARMA}</p>`
+} else if (sessionStorage.ARMA == 'M4') {
+    div_arma.innerHTML = ` <h1>Arma escohida</h1>
+<img style="width: 210px; margin-bottom:30px" src="../assets/imgs/m4.jpg">
+                        <p style="margin-left: 15px;" id="arma_escolhida">${sessionStorage.ARMA}</p>`
+} else if (sessionStorage.ARMA == 'Aug') {
+    div_arma.innerHTML = ` <h1>Arma escohida</h1>
+<img style="width: 210px; margin-bottom:30px" src="../assets/imgs/aug.jpg">
+                        <p style="margin-left: 15px;" id="arma_escolhida">${sessionStorage.ARMA}</p>`
+} else {
+    div_arma.innerHTML = ` <h1>Arma escohida</h1>
+<img style="width: 210px; margin-bottom:30px" src="../assets/imgs/sg.jpg">
+                        <p style="margin-left: 15px;" id="arma_escolhida">${sessionStorage.ARMA}</p>`
+}
+
+if (sessionStorage.FUNCAO == 'Lurker') {
+div_funcao.innerHTML = `  <h1>Função escolhida</h1>
+<img style="width: 100px; margin-bottom: 30px;" src="../assets/imgs/lurker.jpg">
+                        <p style="margin-left: 15px;" id="funcao_escolhida">${sessionStorage.FUNCAO}</p>
+`
+} else if (sessionStorage.FUNCAO == 'Support') {
+    div_funcao.innerHTML = `  <h1>Função escolhida</h1>
+<img style="width: 70px; margin-bottom: 30px;" src="../assets/imgs/flash.jpg">
+                        <p style="margin-left: 15px;" id="funcao_escolhida">${sessionStorage.FUNCAO}</p>`
+} else if (sessionStorage.FUNCAO == 'Coringa') {
+    div_funcao.innerHTML = `  <h1>Função escolhida</h1>
+<img style="width: 100px; margin-bottom: 30px;" src="../assets/imgs/coringa.jpg">
+                        <p style="margin-left: 15px;" id="funcao_escolhida">${sessionStorage.FUNCAO}</p>`
+} else if (sessionStorage.FUNCAO == 'Awper') {
+    div_funcao.innerHTML = `  <h1>Função escolhida</h1>
+<img style="width: 100px; margin-bottom: 30px;" src="../assets/imgs/awper.jpg">
+                        <p style="margin-left: 15px;" id="funcao_escolhida">${sessionStorage.FUNCAO}</p>`
+} else {
+    div_funcao.innerHTML = `  <h1>Função escolhida</h1>
+<img style="width: 100px; margin-bottom: 30px;" src="../assets/imgs/ig3.jpg">
+                        <p style="margin-left: 15px;" id="funcao_escolhida">${sessionStorage.FUNCAO}</p>`
+}
+
+
+
+
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
+
+        function sendData() {
+            var http = new XMLHttpRequest();
+            http.open('POST', 'http://localhost:3000/api/sendData', false);
+            http.send(null);
+        }
+
+
+
+        function obterdados(idAquario) {
+            fetch(`/medidas/tempo-real/${idAquario}`)
+                .then(resposta => {
+
+                    if (resposta.ok) {
+                        resposta.json().then(resposta => {
+
+                            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                            var dados = {
+                                temperatura: resposta[0].temperatura,
+                            }
+
+                            alertar(resposta[0].temperatura, idAquario);
+                        });
+                    } else {
+
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+                });
+
+        }
+
+        function alertar(temperatura, idAquario) {
+            var limites = {
+                muito_quente: 23,
+                quente: 22,
+                ideal: 20,
+                frio: 10,
+                muito_frio: 5
+            };
+
+            var classe_temperatura = 'cor-alerta';
+
+            if (temperatura >= limites.muito_quente) {
+                classe_temperatura = 'cor-alerta perigo-quente';
+                console.log("caiu no 1")
+            }
+            else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+                classe_temperatura = 'cor-alerta alerta-quente';
+                console.log("caiu no 2")
+            }
+            else if (temperatura < limites.quente && temperatura > limites.frio) {
+                classe_temperatura = 'cor-alerta ideal';
+                console.log("caiu no 3")
+            }
+            else if (temperatura <= limites.frio && temperatura > limites.muito_frio) {
+                classe_temperatura = 'cor-alerta alerta-frio';
+                console.log("caiu no 4")
+            }
+            else if (temperatura < limites.min_temperatura) {
+                classe_temperatura = 'cor-alerta perigo-frio';
+                console.log("caiu no 5")
+            }
+
+            var card;
+
+            if (idAquario == 1) {
+                temp_aquario_1.innerHTML = temperatura + "°C";
+                card = card_1
+            } else if (idAquario == 2) {
+                temp_aquario_2.innerHTML = temperatura + "°C";
+                card = card_2
+            } else if (idAquario == 3) {
+                temp_aquario_3.innerHTML = temperatura + "°C";
+                card = card_3
+            } else if (idAquario == 4) {
+                temp_aquario_4.innerHTML = temperatura + "°C";
+                card = card_4
+            }
+
+            // alterando
+            card.className = classe_temperatura;
+
+        }
+    }
+
+    
+
+/* CHARTJS JOGADORES */
+
+   /*  const labels = [
+    'Red',
+    'Yellow',
+    'Blue',
+    'Black'
+
+  ]; */
+
+  const data1 = {
+    labels: [`Fallen`, 'Scream', 'S1mple', 'Zywoo', 'Device'],
+    datasets: [{
+      label: 'Points',
+      backgroundColor:['rgb(233, 49, 49)',
+       'rgb(231, 228, 57)',
+        'rgb(50, 25, 194)',
+         'rgb(10, 10, 10)',
+        'rgb(40, 255, 50)'],
+         data: [0, 0, 0, 0, 0]
+       
+       
+    }]
+  };
+
+
+  const config = {
+    type: 'pie',
+    data: data1,
+    options: {}
+  };
+
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
+  /* CHARTJS MAPAS */
+
+  const data2 = {
+    labels: [`Mirage`, 'Train', 'Dust2', 'Inferno', 'Nuke'],
+    datasets: [{
+      label: 'Points',
+      backgroundColor:['rgb(233, 49, 49)',
+       'rgb(231, 228, 57)',
+        'rgb(50, 25, 194)',
+         'rgb(10, 10, 10)',
+        'rgb(40, 255, 50)'],
+         data: [0, 0, 0, 0, 0]
+       
+       
+    }]
+  };
+
+
+  const config2 = {
+    type: 'pie',
+    data: data2,
+    options: {}
+  };
+
+  const myChart1 = new Chart(
+    document.getElementById('myChart1'),
+    config2
+  );
+
+  /* CHARTJS ARMA */
+
+  const data3 = {
+    labels: [`Awp`, 'Ak-47', 'M4', 'Aug', 'Sg 553'],
+    datasets: [{
+      label: 'Points',
+      backgroundColor:['rgb(233, 49, 49)',
+       'rgb(231, 228, 57)',
+        'rgb(50, 25, 194)',
+         'rgb(10, 10, 10)',
+        'rgb(40, 255, 50)'],
+         data: [0, 0, 0, 0, 0]
+       
+       
+    }]
+  };
+
+
+  const config3 = {
+    type: 'pie',
+    data: data3,
+    options: {}
+  };
+
+  const myChart2 = new Chart(
+    document.getElementById('myChart2'),
+    config3
+  );
+
+  /* CHARTJS FUNCOES */
+
+  const data4 = {
+    labels: [`Lurker`, 'Support', 'Coringa', 'Awper', 'Igl'],
+    datasets: [{
+      label: 'Points',
+      backgroundColor:['rgb(233, 49, 49)',
+       'rgb(231, 228, 57)',
+        'rgb(50, 25, 194)',
+         'rgb(10, 10, 10)',
+        'rgb(40, 255, 50)'],
+         data: [0, 0, 0, 0, 0]
+       
+       
+    }]
+  };
+
+
+  const config4 = {
+    type: 'pie',
+    data: data4,
+    options: {}
+  };
+
+  const myChart3 = new Chart(
+    document.getElementById('myChart3'),
+    config4
+  );
+
+
+
+
+</script>
+
+</html>

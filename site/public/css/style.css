@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Barlow', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  
+ 
+  
+  
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  display: flex;
+}
+
+.header {
+  border-bottom: 1px solid #000000;
+  background: url('../assets/imgs/header.jpg') 50%;
+  background-repeat: no-repeat;
+  background-size: 10% 100%;
+  
+  
+ 
+}
+
+.header .container {
+  justify-content: space-between;
+}
+
+.header a {
+  text-decoration: none;
+  color: #fa0000;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.navbar {
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #ee0000;
+}
+
+
+.titulo {
+  color: #6bb7fd;
+  width: fit-content;
+  font-weight: 500;
+}
+
+
+/* BANNER */
+
+.banner {
+  background-color: black;
+  height: 600px;
+  padding: none;
+  color: rgb(255, 255, 255);
+  background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
+  background-size: cover;
+}
+
+.banner .container {
+  height: 550px;
+  font-size: 36px;
+  justify-content: center;
+ flex-direction: column;
+  align-items: center;
+  
+}
+
+.Titulo {
+height: 100px;
+}
+
+
+.video {
+ 
+  padding: 0;
+  margin: none;
+  display: flex;
+}
+
+p {
+
+  display: flex;
+}
+
+.titulo_video {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.banner .container video {
+  flex-direction: row;
+}
+
+.tamanho-conteudo { 
+  height: fit-content !important;
+}
+
+.banner p {
+  width: 50%;
+  margin: 0;
+  padding: 0;
+  width: 280px;
+  font-size: 36px;
+
+}
+
+.banner .container span {
+  font-weight: 800;
+}
+
+/* missao visao valores */
+
+.social {
+  background-color: #e5e5e5;
+  display: flex;
+}
+
+.social .container{
+  justify-content: center;
+}
+
+.boxes h4 {
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.boxes p {
+  display: flex;
+  justify-content: center;
+  font-size: 27px;
+  
+}
+
+.boxes {
+  background-color:#e5e5e5 ;
+}
+
+.imagem {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+}
+
+li {
+  font-size: 27px;
+  align-items: center;
+}
+
+.social .container .boxes {
+  
+}
+
+.social p {
+  
+}
+
+.box {
+ 
+}
+
+
+.box {
+  
+}
+
+
+/* FOOTER */
+
+.footer {
+  background: url('../assets/imgs/mapanuke.jpg'), url('../assets/imgs/mapaover.jpg') 20%, url('../assets/imgs/mapainferno.jpg') 40%, url('../assets/imgs/mapamirage.jpg')60%, url('../assets/imgs/mapatrain.jpg')80%, url('../assets/imgs/mapad2.jpg') 100%;
+  height: 150px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  font-size: 15px;
+  background-repeat: no-repeat;
+  background-size: 18% 100%;
+}
+
+.footer .container {
+  justify-content: center;
+}
+
+
+/* LOGIN */
+
+.banner_cad_log {
+  background-color: black;
+  height: 700px;
+  padding: none;
+  color: rgb(255, 255, 255);
+  background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
+  background-size: cover;
+}
+
+.banner_cad_log .container {
+  height: 550px;
+  font-size: 36px;
+  justify-content: center;
+ flex-direction: column;
+  align-items: center;
+  
+}
+
+select {  
+  border: 1px solid #6bb7fd;
+  height: 30px;
+}
+
+.banner_cad_log .container span {
+  font-weight: 800;
+}
+
+.banner_cad_log {
+  background: url('../assets/imgs/cartoon1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner_cad_log .container .card {
+  background-color: #000000b0;
+  height: fit-content;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  align-items: center;
+  border-radius: 4px;
+}
+
+.card {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.card h2 {
+  font-size: 30px;
+}
+
+.card h4 {
+  font-size: 16px;
+}
+
+.banner_cad_log #div_erros_login {
+  margin-top: 15px;
+}
+
+button {
+  cursor: crosshair;
+}
+
+/* FORMULARIO */
+
+.alerta_erro{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 230px;
+  position: fixed;
+  border-radius: 4px;
+  border: #e6005a 3px solid;
+  padding: 10px;
+  margin-right: 10%;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.formulario .tipo_campo {
+  font-size: 20px;
+  font-weight: 600 !important;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  border: 2px solid #32b9cd;
+  padding: 10px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.btn {
+  font-family: "Barlow", sans-serif;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: white;
+  background-color: #4da9ff;
+  width: 120px;
+  align-self: center;
+  margin-top: 5px;
+}
+
+.loading-div {
+  width: 50px;
+  margin: auto;
+  display: none;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
+}
+
+/* PAGINA DOS GRÁFICOS */
+
+.janela {
+  display: flex;
+  width: 100vw;
+}
+
+.header-left a {
+  text-decoration: none;
+  color: white;
+}
+
+.header-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-right: 3px solid #32b9cd;
+  background-color: #212124;
+  /* border: 3px solid pink; */
+}
+
+.dash-right {
+  display: flex;
+  width: 75%;
+  height: fit-content;
+  background-color: #161618;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.header-left h1 {
+  color: #32b9cd;
+}
+
+.hello {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hello h3 {
+  color: #e3b062;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.hello h3 span {
+  font-weight: 800;
+}
+
+.btn-nav {
+  width: 40%;
+  color: white;
+  background-color: #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.btn-nav-white {
+  width: 40%;
+  background-color: white;
+  border: 3px solid #e6005a;
+  border-radius: 5px;
+  text-align: center;
+  padding: 2% 5%;
+}
+
+.btn-nav-white h3 {
+  color: #e6005a;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-nav h3,
+.btn-logout h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-logout {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #32b9cd;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+
+/* pagina extra - simulador */
+.simulador {
+  color: white;
+
+}
+
+
+.simulador .container {
+  flex-direction: column
+}

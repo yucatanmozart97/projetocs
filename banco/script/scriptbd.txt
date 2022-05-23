@@ -1,0 +1,89 @@
+create database piyucatan;
+use piyucatan;
+
+create table usuario (
+idusuario int primary key auto_increment,
+nome varchar(50),
+email varchar(50),
+senha varchar(50),
+fk_jog int,
+constraint fkJogador foreign key (fk_jog) references jog_escolha(id_jog),
+fk_map int,
+constraint fkMapa foreign key (fk_map) references map_escolha(id_map),
+fk_arma int,
+constraint fkArma foreign key (fk_arma) references arma_escolha(id_arma),
+fk_fun int,
+constraint fkFuncao foreign key (fk_fun) references fun_escolha(id_fun)); 
+
+
+
+select * from usuario;
+
+(select count(idusuario) as 'votos_totais' from usuario ) union 
+(select count(fk_jog) as votos_fallen from usuario where fk_jog);
+
+
+
+select idusuario, nome, email, nome_jog, nome_map, nome_arma, nome_fun from usuario 
+inner join jog_escolha on id_jog = fk_jog
+inner join map_escolha on id_map = fk_map
+inner join arma_escolha on id_arma = fk_arma
+inner join fun_escolha on id_fun = fk_fun;
+
+ select nome_fun as nome, count(fk_fun) as voto
+from usuario 
+inner join fun_escolha on id_fun = fk_fun
+group by nome_fun;
+
+
+
+
+
+
+create table jog_escolha (
+id_jog int primary key auto_increment,
+nome_jog varchar(20));
+
+insert into jog_escolha (nome_jog) values ('Fallen'),
+('Scream'),
+('S1mple'),
+('Zywoo'),
+('Device');
+
+select * from jog_escolha;
+
+create table map_escolha (
+id_map int primary key auto_increment,
+nome_map varchar(20));
+
+select * from map_escolha;
+
+insert into map_escolha (nome_map) values ('Mirage'),
+('Train'),
+('Dust2'),
+('Inferno'),
+('Nuke');
+
+create table arma_escolha (
+id_arma int primary key auto_increment,
+nome_arma varchar(20));
+
+select * from arma_escolha;
+
+insert into arma_escolha (nome_arma) values ('Awp'),
+('Ak-47'),
+('M4'),
+('Aug'),
+('Sg 553');
+
+create table fun_escolha (
+id_fun int primary key auto_increment,
+nome_fun varchar(20));
+
+insert into fun_escolha (nome_fun) values ('Lurker'),
+('Support'),
+('Coringa'),
+('Awper'),
+('IGL');
+
+select * from fun_escolha;
