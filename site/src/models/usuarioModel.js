@@ -57,6 +57,14 @@ group by nome_fun;
     return database.executar(instrucao);
 }
 
+function requisitar_pontuacao() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function requisitar_arma()");
+    var instrucao = `
+    select nome, pontuacao_usuario as pontuacao from usuario order by pontuacao desc limit 10;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 
@@ -93,5 +101,6 @@ module.exports = {
     requisitar,
     requisitar_mapa,
     requisitar_arma,
-    requisitar_funcao
+    requisitar_funcao,
+    requisitar_pontuacao
 };

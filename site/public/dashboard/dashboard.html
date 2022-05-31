@@ -22,11 +22,11 @@
 
 </head>
 
-<body onload="validarSessao(), atualizarFeed()">
+<body onload="validarSessao(), requisitar_pontuacao()">
     <!-- <body onload="validarSessao()"> -->
 
     <div class="janela">
-        <div class="header-left">
+        <div style="width:300px;" class="header-left">
             <h1>Pi - CS</h1>
 
             <div class="hello">
@@ -35,41 +35,47 @@
 
             <div class="btn-nav-white">
                 <a href="./cards.html">
-                    <h3>Aquários</h3>
+                    <h3>Dashboard</h3>
                 </a>
             </div>
 
             <div class="btn-nav">
 
-                <h3>Gráficos</h3>
+                <h3>Teste de mira</h3>
 
             </div>
 
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
+
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-
+            
         </div>
+        
+        <div class="dash" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <div style="display:none ; margin: auto; color: black; background-color: grey; width: 180px; height: 100px; top: 0;left: 0; right: 0; bottom: 0; font-size: 15px; align-items: center; align-self: center; justify-content: center;" id="resultado">Pontuação: <span id="span_resultado">0</span></div>
+             
 
-        <div class="dash">
-            <div class="btns-dash">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-                <button class="btn-chart" onclick="obterDadosGrafico(1)">Aquario 1</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(2)">Aquario 2</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(3)">Aquario 3</button>
-                <button class="btn-chart" onclick="obterDadosGrafico(4)">Aquario 4</button>
+            <button style="display: block; border-radius: 10px; border: 1px solid green; background-color: greenyellow; width: 180px; height: 90px;" id="button_comecar" onclick="comecar()"> Iniciar
+            </button>
+             
+
+                <div style="display: none;" id="jogo" style="width: 550px; heigth: 600px">
+                    <div onclick="clicar()" style="border-radius:50%; background-color: red; width: 50px; height: 50px; display: block;position: absolute;" id="alvo"></div>
+                </div> 
+                
+                
             </div>
-            <div class="graph">
-                <canvas id="canvas_grafico"></canvas>
+
+            <div class="top10" style="display:none ; margin: auto; color: black; background-color: grey; width: 270px; height: 100vh; top: 0;left: 0; right: 0; bottom: 0; font-size: 15px;" id="div_top10">
+                
+                    
+                
             </div>
-        </div>
-    </div>
+
+
+
 
 
 </body>
@@ -78,162 +84,122 @@
 
 <script>
 
-    let proximaAtualizacao;
+var qtd = 0
 
-    window.onload = obterDadosGrafico(1);
+function comecar() {
+    span_resultado.innerHTML = ''
+    document.getElementById('resultado').style.display = 'none'
+document.getElementById('jogo').style.display = 'block'
+document.getElementById('div_top10').style.display = 'none'
+document.getElementById('button_comecar').style.display = 'none'
+setTimeout(parar, 6000)
+qtd = 0
+}
 
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+function parar() {
+    document.getElementById('jogo').style.display = 'none'
+document.getElementById('button_comecar').style.display = 'block'
+document.getElementById('resultado').style.display = 'flex'
+document.getElementById('div_top10').style.display = 'block'
+span_resultado.innerHTML = `${qtd}`
+button_comecar.innerHTML = 'Jogar novamente'
 
-    //verificar_autenticacao();
+}
 
-    // altere aqui como os dados serão exibidos
-    // e como são recuperados do BackEnd
-    function obterDadosGrafico(idAquario) {
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+function clicar() {
+document.getElementById('alvo').style.display = 'none'
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+qtd += 100
 
-                    plotarGrafico(resposta, idAquario);
-                });
+aparecer()
+
+
+}
+
+function aparecer() {
+if (document.getElementById('alvo').style.display = 'none') {
+document.getElementById('alvo').style.display = 'block'
+document.getElementById('alvo').style.top = (Math.floor(Math.random(1)*(70))) + 'vh'
+document.getElementById('alvo').style.left = (Math.floor(Math.random(1)*(70))) + 'vw'
+
+
+
+}
+
+}
+
+var top1 = 0
+var top2 = 0
+var top3 = 0
+var top4 = 0
+var top5 = 0
+var top6 = 0
+var top7 = 0
+var top8 = 0
+var top9 = 0
+var top10 = 0
+
+var nome1 = 0
+var nome2 = 0
+var nome3 = 0
+var nome4 = 0
+var nome5 = 0
+var nome6 = 0
+var nome7 = 0
+var nome8 = 0
+var nome9 = 0
+var nome10 = 0
+
+
+
+function requisitar_pontuacao() {
+        fetch("/usuarios/requisitar_pontuacao").then(function (res1) {
+            if (res1.ok) {
+                console.log(res1)
+                res1.json().then(function (res1) {
+                    console.log("Dados recebidos: ", JSON.stringify(res1))
+                
+                      top1 = res1[0].pontuacao
+                      nome1 = res1[0].nome
+                      top2 = res1[1].pontuacao
+                      nome2 = res1[1].nome
+                      top3 = res1[2].pontuacao
+                      nome3 = res1[2].nome
+                      top4 = res1[3].pontuacao
+                      nome4 = res1[3].nome
+                      top5 = res1[4].pontuacao
+                      nome5 = res1[4].nome
+                      top6 = res1[5].pontuacao
+                      nome6 = res1[5].nome
+                      top7 = res1[6].pontuacao
+                      nome7 = res1[6].nome
+                      top8 = res1[7].pontuacao
+                      nome8 = res1[7].nome
+                      top9 = res1[8].pontuacao
+                      nome9 = res1[8].nome
+                      top10 = res1[9].pontuacao
+                      nome10 = res1[9].nome
+
+                      div_top10.innerHTML += `${nome1} -- ${top1} <br>`
+                      div_top10.innerHTML += `${nome2} -- ${top2} <br>`
+            div_top10.innerHTML += `${nome3} -- ${top3} <br>`
+            div_top10.innerHTML += `${nome4} -- ${top4} <br>`
+            div_top10.innerHTML += `${nome5} -- ${top5} <br>`
+            div_top10.innerHTML += `${nome6} -- ${top6} <br>`
+            div_top10.innerHTML += `${nome7} -- ${top7} <br>`
+            div_top10.innerHTML += `${nome8} -- ${top8} <br>`
+            div_top10.innerHTML += `${nome9} -- ${top9} <br>`
+            div_top10.innerHTML += `${nome10} -- ${top10} <br>`
+
+                }
+                );
             } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                throw ('Houve um erro ao pegar info!');
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
-
-    // só altere aqui se souber o que está fazendo!
-    function plotarGrafico(resposta, idAquario) {
-        console.log('iniciando plotagem do gráfico...');
-
-        var dados = {
-            labels: [],
-            datasets: [
-                {
-                    yAxisID: 'y-umidade',
-                    label: 'Umidade',
-                    borderColor: '#32B9CD',
-                    backgroundColor: '#32b9cd8f',
-                    fill: true,
-                    data: []
-                },
-                {
-                    yAxisID: 'y-temperatura',
-                    label: 'Temperatura',
-                    borderColor: '#FFF',
-                    backgroundColor: '#32b9cd8f',
-                    fill: true,
-                    data: []
-                }
-            ]
-        };
-
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            dados.labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
-        }
-
-        console.log(JSON.stringify(dados));
-
-        var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {
-            data: dados,
-            //Configurações do gráfico
-            options: {
-                responsive: true,
-                animation: { duration: 500 },
-                hoverMode: 'index',
-                stacked: false,
-                title: {
-                    display: true,
-                    text: 'Histórico recente de umidade/temperatura'
-                },
-                scales: {
-                    yAxes: [{
-                        type: 'linear',
-                        display: true,
-                        position: 'left',
-                        id: 'y-temperatura',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        }
-                    }, {
-                        type: 'linear',
-                        display: false,
-                        position: 'right',
-                        id: 'y-umidade',
-                        ticks: {
-                            beginAtZero: true,
-                            max: 100,
-                            min: 0
-                        },
-
-                        gridLines: {
-                            drawOnChartArea: false,
-                        },
-                    }],
-                }
-            }
+        }).catch(function (res1) {
+            console.error(res1);
         });
-
-        function sendData() {
-			var http = new XMLHttpRequest();
-			http.open('POST', 'http://localhost:3000/api/sendData', false);
-			http.send(null);
-		}
-
-        setInterval(() => {
-			sendData();
-		}, 2000);
-
-        //Atualiza os dados de 5 em 5 segundos
-        setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
     }
 
-    // só mexer se quiser alterar o tempo de atualização
-    // ou se souber o que está fazendo!
-    function atualizarGrafico(idAquario, dados) {
 
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico: ${dados}`);
-
-                    // tirando e colocando valores no gráfico
-                    dados.labels.shift(); // apagar o primeiro
-                    dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-                    dados.datasets[1].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de umidade
-
-                    window.grafico_linha.update();
-
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados), 2000);
-            }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-            });
-
-    }
 </script>

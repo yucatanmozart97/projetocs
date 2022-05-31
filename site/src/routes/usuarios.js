@@ -36,4 +36,8 @@ router.get("/requisitar_funcao", function (req, res) {
     usuarioController.requisitar_funcao(req, res);
 });
 
+router.get("/requisitar_pontuacao", function (req, res) {
+    usuarioController.requisitar_pontuacao(req, res);
+});
+
 module.exports = router;

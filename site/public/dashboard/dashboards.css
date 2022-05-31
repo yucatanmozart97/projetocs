@@ -3,6 +3,7 @@
 *,
 body {
   font-family: "Exo 2", sans-serif;
+  overflow-x: hidden;
 }
 
 .dash-right .avisos {
@@ -34,6 +35,8 @@ body {
   width: 100%;
   border-radius: 5px;
 }
+
+
 
 .dash-right .avisos .div-form textarea {
   width: 100%;
@@ -110,10 +113,10 @@ body {
 }
 
 .dash {
-  width: 75%;
+  width: 100%;
   position: relative;
   top: 0;
-  left: 25%;
+ margin-left: 300px;
   background-color: #161618;
 
   /* width: 75%;
@@ -162,6 +165,7 @@ body {
 }
 
 .cards {
+  
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -176,9 +180,10 @@ body {
 }
 
 .card {
+  overflow-y: hidden;
   margin: 2%;
   width: 36%;
-  height: 250px;
+  height: 300px;
   flex-wrap: wrap;
   display: flex;
   text-align: center;

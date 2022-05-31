@@ -60,7 +60,7 @@ body {
 
 .banner {
   background-color: black;
-  height: 600px;
+  height: 551px;
   padding: none;
   color: rgb(255, 255, 255);
   background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
@@ -94,10 +94,11 @@ p {
 }
 
 .titulo_video {
-  width: 100%;
+  width: 85%;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content:space-between;
+ 
 }
 
 .banner .container video {
@@ -182,7 +183,7 @@ li {
 
 .footer {
   background: url('../assets/imgs/mapanuke.jpg'), url('../assets/imgs/mapaover.jpg') 20%, url('../assets/imgs/mapainferno.jpg') 40%, url('../assets/imgs/mapamirage.jpg')60%, url('../assets/imgs/mapatrain.jpg')80%, url('../assets/imgs/mapad2.jpg') 100%;
-  height: 150px;
+  height: 100px;
   color: rgb(255, 255, 255);
   display: flex;
   font-size: 15px;
@@ -199,7 +200,7 @@ li {
 
 .banner_cad_log {
   background-color: black;
-  height: 700px;
+  height: 900px;
   padding: none;
   color: rgb(255, 255, 255);
   background-image: url(".././assets/imgs/bg-jelly-fish-para_outras_pags.png");
