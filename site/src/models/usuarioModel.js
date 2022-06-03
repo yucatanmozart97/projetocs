@@ -71,7 +71,7 @@ function requisitar_pontuacao() {
 function entrar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucao = `
-    select idusuario, nome, email, nome_jog, nome_map, nome_arma, nome_fun from usuario 
+    select idusuario, nome, email, nome_jog, nome_map, nome_arma, nome_fun, pontuacao_usuario from usuario 
     inner join jog_escolha on id_jog = fk_jog
     inner join map_escolha on id_map = fk_map
     inner join arma_escolha on id_arma = fk_arma
@@ -94,6 +94,18 @@ function cadastrar(nome, email, senha,  jogador, mapa, arma, funcao) {
     return database.executar(instrucao);
 }
 
+function atualizar_pontuacao(pontuacao, id) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", pontuacao, id);
+    
+    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
+    //  e na ordem de inserção dos dados.
+    var instrucao = `
+    update usuario set pontuacao_usuario = '${pontuacao}' where idusuario = ${id};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     entrar,
     cadastrar,
@@ -102,5 +114,6 @@ module.exports = {
     requisitar_mapa,
     requisitar_arma,
     requisitar_funcao,
-    requisitar_pontuacao
+    requisitar_pontuacao,
+    atualizar_pontuacao
 };

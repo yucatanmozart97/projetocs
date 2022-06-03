@@ -40,4 +40,8 @@ router.get("/requisitar_pontuacao", function (req, res) {
     usuarioController.requisitar_pontuacao(req, res);
 });
 
+router.post("/atualizar_pontuacao", function (req, res) {
+    usuarioController.atualizar_pontuacao(req, res);
+});
+
 module.exports = router;

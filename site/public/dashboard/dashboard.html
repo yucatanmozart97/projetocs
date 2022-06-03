@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload="validarSessao(), requisitar_pontuacao()">
+<body onload="validarSessao()">
     <!-- <body onload="validarSessao()"> -->
 
     <div class="janela">
@@ -94,6 +94,7 @@ document.getElementById('div_top10').style.display = 'none'
 document.getElementById('button_comecar').style.display = 'none'
 setTimeout(parar, 6000)
 qtd = 0
+div_top10.innerHTML = ''
 }
 
 function parar() {
@@ -103,7 +104,7 @@ document.getElementById('resultado').style.display = 'flex'
 document.getElementById('div_top10').style.display = 'block'
 span_resultado.innerHTML = `${qtd}`
 button_comecar.innerHTML = 'Jogar novamente'
-
+atualizar_pontuacao()
 }
 
 function clicar() {
@@ -139,16 +140,23 @@ var top8 = 0
 var top9 = 0
 var top10 = 0
 
-var nome1 = 0
-var nome2 = 0
-var nome3 = 0
-var nome4 = 0
-var nome5 = 0
-var nome6 = 0
-var nome7 = 0
-var nome8 = 0
-var nome9 = 0
-var nome10 = 0
+var nome1 = ''
+var nome2 = ''
+var nome3 = ''
+var nome4 = ''
+var nome5 = ''
+var nome6 = ''
+var nome7 = ''
+var nome8 = ''
+var nome9 = ''
+var nome10 = ''
+
+var lista_top10_nome = []
+var lista_top10_pontos = []
+
+for (var contador = 1; contador <= 10; contador++) {
+  lista_top10_nome.push(nome + contador)
+}
 
 
 
@@ -199,6 +207,54 @@ function requisitar_pontuacao() {
         }).catch(function (res1) {
             console.error(res1);
         });
+    }
+
+
+    function atualizar_pontuacao() {
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var pontuacaoVar = qtd;
+        var idVar = sessionStorage.ID_USUARIO;
+        
+
+
+        if (pontuacaoVar <= sessionStorage.PONTUACAO) {            
+            requisitar_pontuacao()
+            return false;
+        }
+       
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/atualizar_pontuacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                pontuacaoServer: pontuacaoVar,
+                idServer: idVar
+               
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                sessionStorage.PONTUACAO = pontuacaoVar
+                requisitar_pontuacao()
+
+            } else {
+                throw ("Houve um erro ao atualizar pontuacao");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
     }
 
 
