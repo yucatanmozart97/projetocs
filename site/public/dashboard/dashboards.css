@@ -41,7 +41,7 @@ body {
 .dash-right .avisos .div-form textarea {
   width: 100%;
   /* color: #E6005A; */
-  border: 3px solid #e6005a;
+  border: 3px solid #6bb7fd;
   background-color: white;
   border-radius: 5px;
 }
@@ -68,7 +68,7 @@ body {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: #e6005a;
+  background-color: #6bb7fd;
   width: 80px;
 }
 
@@ -79,7 +79,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid #e6005a;
+  border-bottom: 3px solid #6bb7fd;
   padding: 20px;
 }
 
@@ -244,6 +244,6 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #6bb7fd;
   margin: 5px;
 }

@@ -276,17 +276,17 @@ button {
   display: none;
   background-color: #fff;
   color: black;
-  width: 230px;
+  width: 300px;
   position: fixed;
   border-radius: 4px;
-  border: #e6005a 3px solid;
+  border: #6bb7fd 3px solid;
   padding: 10px;
   margin-right: 10%;
 }
 
 .card_erro #mensagem_erro{
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 .formulario .tipo_campo {
@@ -381,7 +381,7 @@ input {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: rgb(39, 216, 39);
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -393,7 +393,7 @@ input {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #6bb7fd;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -402,14 +402,14 @@ input {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #6bb7fd;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #6bb7fd;
   padding: 0;
   margin: 0;
 }

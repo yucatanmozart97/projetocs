@@ -74,7 +74,7 @@
 
                     <span class="tipo_campo">Jogador:</span>
                     <select id="select_jogador">
-                        <option value="nada">-</option>
+                        <option value="0">-</option>
                         <option value="1">Fallen</option>
                         <option value="2">Scream</option>
                         <option value="3">S1mple</option>
@@ -84,7 +84,7 @@
 
                     <span class="tipo_campo">Mapa:</span>
                     <select id="select_mapa">
-                        <option value="nada">-</option>
+                        <option value="0">-</option>
                         <option value="1">Mirage</option>
                         <option value="2">Train</option>
                         <option value="3">Dust2</option>
@@ -94,7 +94,7 @@
 
                     <span class="tipo_campo">Arma:</span>
                     <select id="select_arma">
-                        <option value="nada">-</option>
+                        <option value="0">-</option>
                         <option value="1">Awp</option>
                         <option value="2">Ak-47</option>
                         <option value="3">M4</option>
@@ -104,7 +104,7 @@
 
                     <span class="tipo_campo">Funções:</span>
                     <select id="select_funcao">
-                        <option value="nada">-</option>
+                        <option value="0">-</option>
                         <option value="1">Lurker</option>
                         <option value="2">Support</option>
                         <option value="3">Coringa</option>
@@ -116,7 +116,7 @@
 
                 </div>
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="./assets/loader.gif" id="loading-gif">
                 </div>
 
                 <div id="div_erros_login">
@@ -155,10 +155,30 @@
         var funcaoVar = Number(select_funcao.value)
 
 
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "" ) {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Preencha todos os campos";
 
+            finalizarAguardar();
+            return false;
+        } else if ( emailVar.indexOf(`@`) == -1 || emailVar.indexOf('.com') == -1) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Email inválido";
+            finalizarAguardar();
+            return false;
+        } else if (nomeVar.length < 4) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Nome muito curto";
+            finalizarAguardar();
+            return false;
+        } else if (senhaVar.length < 7) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Senha deve conter pelo menos 7 caracteres";
+            finalizarAguardar();
+            return false;
+        } else if ( jogadorVar == 0 || mapaVar == 0 || armaVar == 0 || funcaoVar == 0) {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Selecione sua escolha na combobox";
             finalizarAguardar();
             return false;
         }

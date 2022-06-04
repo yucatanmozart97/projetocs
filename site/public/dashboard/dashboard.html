@@ -54,21 +54,21 @@
         </div>
         
         <div class="dash" style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
-            <div style="display:none ; margin: auto; color: black; background-color: grey; width: 180px; height: 100px; top: 0;left: 0; right: 0; bottom: 0; font-size: 15px; align-items: center; align-self: center; justify-content: center;" id="resultado">Pontuação: <span id="span_resultado">0</span></div>
+            <div style="display:none ; margin: auto; color: black; background-color: rgb(109, 109, 109); width: 180px; height: 100px; top: 0;left: 0; right: 0; bottom: 0; font-size: 15px; font-weight: bold ; align-items: center; align-self: center; justify-content: center;" id="resultado">Pontuação: <span id="span_resultado">0</span></div>
              
 
             <button style="display: block; border-radius: 10px; border: 1px solid green; background-color: greenyellow; width: 180px; height: 90px;" id="button_comecar" onclick="comecar()"> Iniciar
             </button>
              
 
-                <div style="display: none;" id="jogo" style="width: 550px; heigth: 600px">
+                <div style="display: none;" id="jogo" style="width: 550px; height: 600px">
                     <div onclick="clicar()" style="border-radius:50%; background-color: red; width: 50px; height: 50px; display: block;position: absolute;" id="alvo"></div>
                 </div> 
                 
                 
             </div>
 
-            <div class="top10" style="display:none ; margin: auto; color: black; background-color: grey; width: 270px; height: 100vh; top: 0;left: 0; right: 0; bottom: 0; font-size: 15px;" id="div_top10">
+            <div class="top10" style="display:none ; margin: auto; color: rgb(255, 255, 255); background-color: #161618; width: 350px; height: 100vh; top: 0;left: 0; right: 0; bottom: 0; font-size: 21px; font-weight: bold; padding-left: 20px;" id="div_top10">
                 
                     
                 
@@ -92,7 +92,7 @@ function comecar() {
 document.getElementById('jogo').style.display = 'block'
 document.getElementById('div_top10').style.display = 'none'
 document.getElementById('button_comecar').style.display = 'none'
-setTimeout(parar, 6000)
+setTimeout(parar, 15000)
 qtd = 0
 div_top10.innerHTML = ''
 }
@@ -111,6 +111,8 @@ function clicar() {
 document.getElementById('alvo').style.display = 'none'
 
 qtd += 100
+
+
 
 aparecer()
 
@@ -188,16 +190,17 @@ function requisitar_pontuacao() {
                       top10 = res1[9].pontuacao
                       nome10 = res1[9].nome
 
-                      div_top10.innerHTML += `${nome1} -- ${top1} <br>`
-                      div_top10.innerHTML += `${nome2} -- ${top2} <br>`
-            div_top10.innerHTML += `${nome3} -- ${top3} <br>`
-            div_top10.innerHTML += `${nome4} -- ${top4} <br>`
-            div_top10.innerHTML += `${nome5} -- ${top5} <br>`
-            div_top10.innerHTML += `${nome6} -- ${top6} <br>`
-            div_top10.innerHTML += `${nome7} -- ${top7} <br>`
-            div_top10.innerHTML += `${nome8} -- ${top8} <br>`
-            div_top10.innerHTML += `${nome9} -- ${top9} <br>`
-            div_top10.innerHTML += `${nome10} -- ${top10} <br>`
+                      div_top10.innerHTML += `<br><u> TOP 10 Jogadores </u>`
+                      div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <br> <tr> <td> ${nome1} -- ${top1}</td> </tr> <br>`
+                      div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome2} -- ${top2} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td> ${nome3} -- ${top3} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome4} -- ${top4} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome5} -- ${top5} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome6} -- ${top6} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome7} -- ${top7} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome8} -- ${top8} </td> </tr>  <br> </table> `
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome9} -- ${top9} </td> </tr>  <br> </table>`
+            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome10} -- ${top10} </td> </tr>  <br> </table>`
 
                 }
                 );
