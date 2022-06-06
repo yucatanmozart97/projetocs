@@ -22,7 +22,7 @@
 
 </head>
 
-<body onload="validarSessao()">
+<body id="mira" onload="validarSessao()">
     <!-- <body onload="validarSessao()"> -->
 
     <div class="janela">
@@ -95,6 +95,7 @@ document.getElementById('button_comecar').style.display = 'none'
 setTimeout(parar, 15000)
 qtd = 0
 div_top10.innerHTML = ''
+mira.style.cursor = 'crosshair'
 }
 
 function parar() {
@@ -105,6 +106,7 @@ document.getElementById('div_top10').style.display = 'block'
 span_resultado.innerHTML = `${qtd}`
 button_comecar.innerHTML = 'Jogar novamente'
 atualizar_pontuacao()
+mira.style.cursor = 'default'
 }
 
 function clicar() {
@@ -131,6 +133,9 @@ document.getElementById('alvo').style.left = (Math.floor(Math.random(1)*(70))) +
 
 }
 
+var lista_top = []
+var lista_nome = []
+
 var top1 = 0
 var top2 = 0
 var top3 = 0
@@ -153,12 +158,12 @@ var nome8 = ''
 var nome9 = ''
 var nome10 = ''
 
-var lista_top10_nome = []
-var lista_top10_pontos = []
+// var lista_top10_nome = []
+// var lista_top10_pontos = []
 
-for (var contador = 1; contador <= 10; contador++) {
-  lista_top10_nome.push(nome + contador)
-}
+// for (var contador = 1; contador <= 10; contador++) {
+//   lista_top10_nome.push(nome + contador)
+// }
 
 
 
@@ -168,39 +173,20 @@ function requisitar_pontuacao() {
                 console.log(res1)
                 res1.json().then(function (res1) {
                     console.log("Dados recebidos: ", JSON.stringify(res1))
-                
-                      top1 = res1[0].pontuacao
-                      nome1 = res1[0].nome
-                      top2 = res1[1].pontuacao
-                      nome2 = res1[1].nome
-                      top3 = res1[2].pontuacao
-                      nome3 = res1[2].nome
-                      top4 = res1[3].pontuacao
-                      nome4 = res1[3].nome
-                      top5 = res1[4].pontuacao
-                      nome5 = res1[4].nome
-                      top6 = res1[5].pontuacao
-                      nome6 = res1[5].nome
-                      top7 = res1[6].pontuacao
-                      nome7 = res1[6].nome
-                      top8 = res1[7].pontuacao
-                      nome8 = res1[7].nome
-                      top9 = res1[8].pontuacao
-                      nome9 = res1[8].nome
-                      top10 = res1[9].pontuacao
-                      nome10 = res1[9].nome
+                    lista_top = []
+                    lista_nome = []
 
-                      div_top10.innerHTML += `<br><u> TOP 10 Jogadores </u>`
-                      div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <br> <tr> <td> ${nome1} -- ${top1}</td> </tr> <br>`
-                      div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome2} -- ${top2} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td> ${nome3} -- ${top3} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome4} -- ${top4} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome5} -- ${top5} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome6} -- ${top6} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome7} -- ${top7} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome8} -- ${top8} </td> </tr>  <br> </table> `
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome9} -- ${top9} </td> </tr>  <br> </table>`
-            div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${nome10} -- ${top10} </td> </tr>  <br> </table>`
+                
+                    div_top10.innerHTML += `<br><u> TOP 10 Jogadores </u> <br>`
+
+                    for (var contador = 0; contador < 10; contador++) {
+                        lista_top.push(res1[contador].pontuacao)
+                        lista_nome.push(res1[contador].nome)
+                        div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <br> <tr> <td> ${lista_nome[contador]} -- ${lista_top[contador]}</td> </tr>`
+                    }
+
+                    
+
 
                 }
                 );

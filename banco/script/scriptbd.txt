@@ -13,8 +13,24 @@ constraint fkMapa foreign key (fk_map) references map_escolha(id_map),
 fk_arma int,
 constraint fkArma foreign key (fk_arma) references arma_escolha(id_arma),
 fk_fun int,
-constraint fkFuncao foreign key (fk_fun) references fun_escolha(id_fun)); 
+constraint fkFuncao foreign key (fk_fun) references fun_escolha(id_fun),
+pontuacao_usuario int); 
 
+insert into usuario values (null, 'Yucatan', 'yucatan@gmail.com', '1234567', 1, 1, 1, 1, 500),
+(null, 'Danilo', 'danilo@gmail.com', '1234567', 2, 2, 2, 2, 700),
+(null, 'Andre', 'andre@gmail.com', '1234567', 3, 3, 3, 3, 1000),
+(null, 'Lucas', 'lucas@gmail.com', '1234567', 4, 4, 4, 4, 500),
+(null, 'Joana', 'joana@gmail.com', '1234567', 5, 5, 5, 5, 900),
+(null, 'Jose', 'jose@gmail.com', '1234567', 1, 2, 3, 4, 100),
+(null, 'Andrea', 'andrea@gmail.com', '1234567', 5, 4, 3, 2, 1200),
+(null, 'Caio', 'caio@gmail.com', '1234567', 3, 4, 5, 2, 400),
+(null, 'Kleber', 'kleber@gmail.com', '1234567', 4, 5, 2, 3, 800),
+(null, 'Diogo', 'diogo@gmail.com', '1234567', 4, 3, 5, 3, 500),
+(null, 'Gabriel', 'gabriel@gmail.com', '1234567', 2, 2, 3, 3, 600),
+(null, 'Gabriela', 'gabriela@gmail.com', '1234567', 1, 4, 5, 5, 700),
+(null, 'teste1', 'teste1@gmail.com', '1234567', 2, 3, 4, 4, 1000);
+
+select * from usuario;
 
 
 select * from usuario;

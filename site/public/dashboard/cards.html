@@ -24,7 +24,7 @@
 .popup {
     display: none;
     width: 450px;
-    height: 800px;
+    height: 100vh;
     top: 0; bottom: 0;
     left: 0; right: 0;
     position: fixed;
@@ -37,7 +37,7 @@
 
 
 #myChart {
-    width: 26vw;
+    width: 30vw;
    
 }
 
@@ -80,25 +80,25 @@
             
 
             <div id="popup" class="popup">
-                <img onclick="fechar()" style="width:100px ; cursor:pointer;" src="../assets/imgs/transferir.png">
+                <img onclick="fechar()" style="width:50px ; cursor:pointer;" src="../assets/imgs/transferir.png">
                 <canvas id="myChart"></canvas>
                 <div id="div_porcentagem_0"></div>
             </div>
 
             <div id="popup1" class="popup">
-                <img onclick="fechar1()" style="width:100px ; cursor:pointer;" src="../assets/imgs/transferir.png">
+                <img onclick="fechar1()" style="width:50px ; cursor:pointer;" src="../assets/imgs/transferir.png">
                 <canvas id="myChart1"></canvas>
                 <div id="div_porcentagem_1"></div>
             </div>
 
             <div id="popup2" class="popup">
-                <img onclick="fechar2()" style="width:100px ; cursor:pointer;" src="../assets/imgs/transferir.png">
+                <img onclick="fechar2()" style="width:50px ; cursor:pointer;" src="../assets/imgs/transferir.png">
                 <canvas id="myChart2"></canvas>
                 <div id="div_porcentagem_2"></div>
             </div>
 
             <div id="popup3" class="popup">
-                <img onclick="fechar3()" style="width:100px ; cursor:pointer;" src="../assets/imgs/transferir.png">
+                <img onclick="fechar3()" style="width:50px ; cursor:pointer;" src="../assets/imgs/transferir.png">
                 <canvas id="myChart3"></canvas>
                 <div id="div_porcentagem_3"></div>
             </div>
@@ -237,15 +237,15 @@ function fechar3() {
     function jogador_entrar() {
     
     if (jogador_escolhido.innerHTML == 'Device') {
-        div_porcentagem_0.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu o <b>${nome4}</b>, o que fez a quantidade de votos chegar em <b>${voto4}</b>. <br> <b>${(porc_device).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
+        div_porcentagem_0.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu o <b>${nome4}</b>, o que fez a quantidade de votos chegar em <b>${voto4}</b>. <br> <b>${(porc_device).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
     } else if (jogador_escolhido.innerHTML == 'Zywoo') {
-        div_porcentagem_0.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu o <b>${nome3}</b>, o que fez a quantidade de votos chegar em <b>${voto3}</b>. <br> <b>${(porc_zywoo).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
+        div_porcentagem_0.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu o <b>${nome3}</b>, o que fez a quantidade de votos chegar em <b>${voto3}</b>. <br> <b>${(porc_zywoo).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
     } else if (jogador_escolhido.innerHTML == 'S1mple') {
-        div_porcentagem_0.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu o <b>${nome2}</b>, o que fez a quantidade de votos chegar em <b>${voto2}</b>. <br> <b>${(porc_s1mple).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
+        div_porcentagem_0.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu o <b>${nome2}</b>, o que fez a quantidade de votos chegar em <b>${voto2}</b>. <br> <b>${(porc_s1mple).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
     } else if (jogador_escolhido.innerHTML == 'Scream') {
-        div_porcentagem_0.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu o <b>${nome1}</b>, o que fez a quantidade de votos chegar em <b>${voto1}</b>. <br> <b>${(porc_scream).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
+        div_porcentagem_0.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu o <b>${nome1}</b>, o que fez a quantidade de votos chegar em <b>${voto1}</b>. <br> <b>${(porc_scream).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
     } else {
-        div_porcentagem_0.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu o <b>${nome0}</b>, o que fez a quantidade de votos chegar em <b>${voto0}</b>. <br> <b>${(porc_fallen).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
+        div_porcentagem_0.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu o <b>${nome0}</b>, o que fez a quantidade de votos chegar em <b>${voto0}</b>. <br> <b>${(porc_fallen).toFixed()}%</b> dos usuários tem este jogador como preferido. </span>`
     }
 
 }
@@ -258,15 +258,15 @@ function fechar3() {
 function mapa_entrar() {
     
     if (mapa_escolhido.innerHTML == 'Nuke') {
-        div_porcentagem_1.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${mapa4}</b>, o que fez a quantidade de votos chegar em <b>${votomapa4}</b>. <br> <b>${(porc_nuke).toFixed()}%</b> dos usuários preferem este mapa. </span>`
+        div_porcentagem_1.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${mapa4}</b>, o que fez a quantidade de votos chegar em <b>${votomapa4}</b>. <br> <b>${(porc_nuke).toFixed()}%</b> dos usuários preferem este mapa. </span>`
     } else if (mapa_escolhido.innerHTML == 'Inferno') {
-        div_porcentagem_1.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${mapa3}</b>, o que fez a quantidade de votos chegar em <b>${votomapa3}</b>. <br> <b>${(porc_inferno).toFixed()}%</b> dos usuários preferem este mapa. </span>`
+        div_porcentagem_1.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${mapa3}</b>, o que fez a quantidade de votos chegar em <b>${votomapa3}</b>. <br> <b>${(porc_inferno).toFixed()}%</b> dos usuários preferem este mapa. </span>`
     } else if (mapa_escolhido.innerHTML == 'Dust2') {
-        div_porcentagem_1.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${mapa2}</b>, o que fez a quantidade de votos chegar em <b>${votomapa2}</b>. <br> <b>${(porc_dust2).toFixed()}%</b> dos usuários preferem este mapa. </span>`
+        div_porcentagem_1.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${mapa2}</b>, o que fez a quantidade de votos chegar em <b>${votomapa2}</b>. <br> <b>${(porc_dust2).toFixed()}%</b> dos usuários preferem este mapa. </span>`
     } else if (mapa_escolhido.innerHTML == 'Train') {
-        div_porcentagem_1.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${mapa1}</b>, o que fez a quantidade de votos chegar em <b>${votomapa1}</b>. <br> <b>${(porc_train).toFixed()}%</b> dos usuários preferem este mapa. </span>`
+        div_porcentagem_1.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${mapa1}</b>, o que fez a quantidade de votos chegar em <b>${votomapa1}</b>. <br> <b>${(porc_train).toFixed()}%</b> dos usuários preferem este mapa. </span>`
     } else {
-        div_porcentagem_1.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${mapa0}</b>, o que fez a quantidade de votos chegar em <b>${votomapa0}</b>. <br> <b>${(porc_mirage).toFixed()}%</b> dos usuários preferem este mapa. </span>`
+        div_porcentagem_1.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${mapa0}</b>, o que fez a quantidade de votos chegar em <b>${votomapa0}</b>. <br> <b>${(porc_mirage).toFixed()}%</b> dos usuários preferem este mapa. </span>`
     }
 
 }
@@ -274,15 +274,15 @@ function mapa_entrar() {
 function arma_entrar() {
     
     if (arma_escolhida.innerHTML == 'Sg 553') {
-        div_porcentagem_2.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${arma4}</b>, o que fez a quantidade de votos chegar em <b>${votoarma4}</b>. <br> <b>${(porc_sg).toFixed()}%</b> dos usuários preferem esta arma. </span>`
+        div_porcentagem_2.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${arma4}</b>, o que fez a quantidade de votos chegar em <b>${votoarma4}</b>. <br> <b>${(porc_sg).toFixed()}%</b> dos usuários preferem esta arma. </span>`
     } else if (arma_escolhida.innerHTML == 'Aug') {
-        div_porcentagem_2.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${arma3}</b>, o que fez a quantidade de votos chegar em <b>${votoarma3}</b>. <br> <b>${(porc_aug).toFixed()}%</b> dos usuários preferem esta arma. </span>`
+        div_porcentagem_2.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${arma3}</b>, o que fez a quantidade de votos chegar em <b>${votoarma3}</b>. <br> <b>${(porc_aug).toFixed()}%</b> dos usuários preferem esta arma. </span>`
     } else if (arma_escolhida.innerHTML == 'M4') {
-        div_porcentagem_2.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${arma2}</b>, o que fez a quantidade de votos chegar em <b>${votoarma2}</b>. <br> <b>${(porc_m4).toFixed()}%</b> dos usuários preferem esta arma. </span>`
+        div_porcentagem_2.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${arma2}</b>, o que fez a quantidade de votos chegar em <b>${votoarma2}</b>. <br> <b>${(porc_m4).toFixed()}%</b> dos usuários preferem esta arma. </span>`
     } else if (arma_escolhida.innerHTML == 'Ak-47') {
-        div_porcentagem_2.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${arma1}</b>, o que fez a quantidade de votos chegar em <b>${votoarma1}</b>. <br> <b>${(porc_ak).toFixed()}%</b> dos usuários preferem esta arma. </span>`
+        div_porcentagem_2.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${arma1}</b>, o que fez a quantidade de votos chegar em <b>${votoarma1}</b>. <br> <b>${(porc_ak).toFixed()}%</b> dos usuários preferem esta arma. </span>`
     } else {
-        div_porcentagem_2.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${arma0}</b>, o que fez a quantidade de votos chegar em <b>${votoarma0}</b>. <br> <b>${(porc_awp).toFixed()}%</b> dos usuários preferem esta arma. </span>`
+        div_porcentagem_2.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${arma0}</b>, o que fez a quantidade de votos chegar em <b>${votoarma0}</b>. <br> <b>${(porc_awp).toFixed()}%</b> dos usuários preferem esta arma. </span>`
     }
 
 }
@@ -291,15 +291,15 @@ function arma_entrar() {
 function funcao_entrar() {
     
     if (funcao_escolhida.innerHTML == 'IGL') {
-        div_porcentagem_3.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${funcao4}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao4}</b>. <br> <b>${(porc_igl).toFixed()}%</b> dos usuários preferem esta função. </span>`
+        div_porcentagem_3.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${funcao4}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao4}</b>. <br> <b>${(porc_igl).toFixed()}%</b> dos usuários preferem esta função. </span>`
     } else if (funcao_escolhida.innerHTML == 'Awper') {
-        div_porcentagem_3.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${funcao3}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao3}</b>. <br> <b>${(porc_awper).toFixed()}%</b> dos usuários preferem esta função. </span>`
+        div_porcentagem_3.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${funcao3}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao3}</b>. <br> <b>${(porc_awper).toFixed()}%</b> dos usuários preferem esta função. </span>`
     } else if (funcao_escolhida.innerHTML == 'Coringa') {
-        div_porcentagem_3.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${funcao2}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao2}</b>. <br> <b>${(porc_coringa).toFixed()}%</b> dos usuários preferem esta função. </span>`
+        div_porcentagem_3.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${funcao2}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao2}</b>. <br> <b>${(porc_coringa).toFixed()}%</b> dos usuários preferem esta função. </span>`
     } else if (funcao_escolhida.innerHTML == 'Support') {
-        div_porcentagem_3.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${funcao1}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao1}</b>. <br> <b>${(porc_support).toFixed()}%</b> dos usuários preferem esta função. </span>`
+        div_porcentagem_3.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${funcao1}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao1}</b>. <br> <b>${(porc_support).toFixed()}%</b> dos usuários preferem esta função. </span>`
     } else {
-        div_porcentagem_3.innerHTML = `<br> <span style="font-size:33px"> Voce escolheu <b>${funcao0}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao0}</b>. <br> <b>${(porc_lurker).toFixed()}%</b> dos usuários preferem esta função. </span>`
+        div_porcentagem_3.innerHTML = `<br> <span style="font-size:21px"> Voce escolheu <b>${funcao0}</b>, o que fez a quantidade de votos chegar em <b>${votofuncao0}</b>. <br> <b>${(porc_lurker).toFixed()}%</b> dos usuários preferem esta função. </span>`
     }
 
 }
@@ -374,11 +374,11 @@ function funcao_entrar() {
                     votomapa4 = res1[4].voto
                     votomapa_total += votomapa4
 
-                    porc_mirage = (votomapa0 * 100) / voto_total
-                    porc_train = (votomapa1 * 100) / voto_total
-                    porc_dust2 = (votomapa2 * 100) / voto_total
-                    porc_inferno = (votomapa3 * 100) / voto_total
-                    porc_nuke = (votomapa4 * 100) / voto_total
+                    porc_mirage = (votomapa0 * 100) / votomapa_total
+                    porc_train = (votomapa1 * 100) / votomapa_total
+                    porc_dust2 = (votomapa2 * 100) / votomapa_total
+                    porc_inferno = (votomapa3 * 100) / votomapa_total
+                    porc_nuke = (votomapa4 * 100) / votomapa_total
 
 
 
@@ -421,11 +421,11 @@ function funcao_entrar() {
                     votoarma4 = res1[4].voto
                     votoarma_total += votoarma4
 
-                    porc_awp = (votoarma0 * 100) / voto_total
-                    porc_ak = (votoarma1 * 100) / voto_total
-                    porc_m4 = (votoarma2 * 100) / voto_total
-                    porc_aug = (votoarma3 * 100) / voto_total
-                    porc_sg = (votoarma4 * 100) / voto_total
+                    porc_awp = (votoarma0 * 100) / votoarma_total
+                    porc_ak = (votoarma1 * 100) / votoarma_total
+                    porc_m4 = (votoarma2 * 100) / votoarma_total
+                    porc_aug = (votoarma3 * 100) / votoarma_total
+                    porc_sg = (votoarma4 * 100) / votoarma_total
 
                     data3.datasets[0].data[0] = votoarma0
                     data3.datasets[0].data[1] = votoarma1
@@ -466,11 +466,11 @@ function funcao_entrar() {
                     votofuncao4 = res1[4].voto
                     votofuncao_total += votofuncao4
 
-                    porc_lurker = (votofuncao0 * 100) / voto_total
-                    porc_support = (votofuncao1 * 100) / voto_total
-                    porc_coringa = (votofuncao2 * 100) / voto_total
-                    porc_awper = (votofuncao3 * 100) / voto_total
-                    porc_igl = (votofuncao4 * 100) / voto_total
+                    porc_lurker = (votofuncao0 * 100) / votofuncao_total
+                    porc_support = (votofuncao1 * 100) / votofuncao_total
+                    porc_coringa = (votofuncao2 * 100) / votofuncao_total
+                    porc_awper = (votofuncao3 * 100) / votofuncao_total
+                    porc_igl = (votofuncao4 * 100) / votofuncao_total
 
                     data4.datasets[0].data[0] = votofuncao0
                     data4.datasets[0].data[1] = votofuncao1
