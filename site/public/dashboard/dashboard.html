@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/csfavicon.jpg" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi - CS</title>
+    <title>Counter-Strike</title>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="dashboards.css">
@@ -27,7 +27,7 @@
 
     <div class="janela">
         <div style="width:300px;" class="header-left">
-            <h1>Pi - CS</h1>
+            <h1>Counter-Strike</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -182,7 +182,7 @@ function requisitar_pontuacao() {
                     for (var contador = 0; contador < 10; contador++) {
                         lista_top.push(res1[contador].pontuacao)
                         lista_nome.push(res1[contador].nome)
-                        div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <br> <tr> <td> ${lista_nome[contador]} -- ${lista_top[contador]}</td> </tr>`
+                        div_top10.innerHTML += `<table style="border-collapse: collapse; border: 1px solid white"> <tr> <td>${contador + 1}-${lista_nome[contador]} - ${lista_top[contador]}</td> </tr> <br>`
                     }
 
                     
